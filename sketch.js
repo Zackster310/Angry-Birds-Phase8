@@ -14,7 +14,7 @@ var score = 0;
 var gameState = "onSling";
 
 function preload() {
-    
+    DBG = loadImage("sprites/bg.png");
 
     getBG();
 }
@@ -52,6 +52,9 @@ function setup(){
 function draw(){
     if(backgroundImg){
         background(backgroundImg);
+    }
+    else{
+        background(DBG);   
     }
 
     Engine.update(engine);
