@@ -117,7 +117,19 @@ async function getBG(){
 }
 
 function keyPressed(){
-    if(keyCode === 32){
-       // slingshot.attach(bird.body);
+    if(keyCode === 32 && (bird.body.speed < 1 || bird.body.position.x < 0 || bird.body.position.x > 1200)){ 
+
+        bird.trajectory = []; 
+
+        bird.body.velocity.x = 0;
+        bird.body.velocity.y = 0;
+        
+        Matter.Body.setAngle(bird.body,PI/0.1);
+
+        Matter.Body.setPosition(bird.body, {x: 200 , y: 50});
+
+        slingshot.attach(bird.body);
+
+        gameState = "onSling";
     }
 }
